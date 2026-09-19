@@ -11,7 +11,7 @@ print(df.head())
 plt.scatter(df.hours_studied,df.passed,marker='+',color='red')
 
 plt.xlabel('hour studied')
-plt.ylable('passed')
+plt.ylabel('passed')
 plt.show()
 
 from sklearn.model_selection import train_test_split
@@ -46,5 +46,19 @@ print(model.coef_)
 
 print('intercept')
 print(model.intercept_)
+
+import math
+
+def sigmoid(x):
+    return 1/(1+math.exp(-x))
+
+def prediction_function(hours):
+     z = model.coef_[0][0]*hours +model.intercept_[0]
+
+     y = sigmoid(z)
+
+     return y
+hours = 2
+print(prediction_function(hours))
 
 
